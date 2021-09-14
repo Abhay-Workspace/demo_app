@@ -5,7 +5,6 @@ import '../model/tournament.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class Recommendations extends StatefulWidget {
   Recommendations({Key? key}) : super(key: key);

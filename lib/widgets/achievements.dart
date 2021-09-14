@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class Achievments extends StatelessWidget {
   final List<Color> _colors = [Colors.redAccent, Colors.orange];
-  final List<double> _stops = [0.0, 0.9];
 
   late int tournamentsPlayed;
   late int tournamentsWon;
