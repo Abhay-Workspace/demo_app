@@ -53,11 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              LoginPage(
-                  // onSuccessfulLogin: (bool val) {
-                  //   updateId(val);
-                  // },
-                  ),
+              LoginPage(),
             ],
           ),
         ),
