@@ -13,10 +13,6 @@ class CustomCard extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
 
     return Padding(
-      // padding: EdgeInsets.symmetric(
-      //   vertical: height * 0.02,
-      //   horizontal: width * 0.05,
-      // ),
       padding: EdgeInsets.fromLTRB(
         width * 0.05,
         0,

@@ -1,6 +1,7 @@
 class User {
   final String username;
   final String name;
+  final int eloRating;
   final int tournamentsPlayed;
   final int tournamentsWon;
   final int winPer;
@@ -9,6 +10,7 @@ class User {
   User({
     required this.username,
     required this.name,
+    required this.eloRating,
     required this.tournamentsPlayed,
     required this.tournamentsWon,
     required this.winPer,
@@ -19,6 +21,7 @@ class User {
     return User(
       username: json['username'],
       name: json['name'],
+      eloRating: json['elo_rating'],
       tournamentsPlayed: json['tournaments_played'],
       tournamentsWon: json['tournaments_won'],
       winPer: json['win_per'],

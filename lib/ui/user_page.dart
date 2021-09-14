@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../widgets/achievements.dart';
-import '../widgets/card.dart';
 import '../widgets/recommendations.dart';
 import '../model/user_details.dart';
 
@@ -39,10 +38,10 @@ class _UserPageState extends State<UserPage> {
     }
   }
 
-  Widget topSection(height, width, username, name, tournamentsPlayed,
+  Widget topSection(height, width, username, name, eloRating, tournamentsPlayed,
           tournamentsWon, winPer, imageUrl) =>
       Container(
-        height: height * 0.45,
+        height: height * 0.55,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
@@ -53,7 +52,7 @@ class _UserPageState extends State<UserPage> {
                 style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w600,
-                  fontSize: 14.0,
+                  fontSize: 18.0,
                 ),
               ),
               backgroundColor: Colors.white,
@@ -73,11 +72,28 @@ class _UserPageState extends State<UserPage> {
               child: Row(
                 children: <Widget>[
                   leftSection(width, imageUrl),
-                  middleSection(height, width, name),
+                  middleSection(height, width, name, eloRating),
                 ],
               ),
             ),
             Achievments(tournamentsPlayed, tournamentsWon, winPer),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                vertical: height * 0.02,
+                horizontal: width * 0.05,
+              ),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Recommended for you',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 22.0,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       );
@@ -90,7 +106,7 @@ class _UserPageState extends State<UserPage> {
         ),
       );
 
-  Widget middleSection(height, width, name) => Expanded(
+  Widget middleSection(height, width, name, eloRating) => Expanded(
         child: Container(
           padding: EdgeInsets.only(left: width * 0.05),
           child: Column(
@@ -129,11 +145,11 @@ class _UserPageState extends State<UserPage> {
                   child: Row(
                     children: [
                       Text(
-                        '2250',
+                        eloRating.toString(),
                         style: TextStyle(
                           color: Colors.blue,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 14.0,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16.0,
                         ),
                       ),
                       Padding(
@@ -144,7 +160,7 @@ class _UserPageState extends State<UserPage> {
                         style: TextStyle(
                           color: Colors.grey,
                           fontWeight: FontWeight.w600,
-                          fontSize: 9.0,
+                          fontSize: 11.0,
                         ),
                       ),
                     ],
@@ -173,6 +189,7 @@ class _UserPageState extends State<UserPage> {
                     width,
                     snapshot.data!.username,
                     snapshot.data!.name,
+                    snapshot.data!.eloRating,
                     snapshot.data!.tournamentsPlayed,
                     snapshot.data!.tournamentsWon,
                     snapshot.data!.winPer,
@@ -183,25 +200,9 @@ class _UserPageState extends State<UserPage> {
                 }
 
                 // By default, show a loading spinner.
-                return const CircularProgressIndicator();
+                // return const CircularProgressIndicator();
+                return Container();
               },
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: height * 0.02,
-                horizontal: width * 0.05,
-              ),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Recommended for you',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 22.0,
-                  ),
-                ),
-              ),
             ),
             Recommendations(),
           ],

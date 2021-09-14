@@ -87,7 +87,9 @@ class Achievments extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  tournamentsWon.toString(),
+                  tournamentsWon
+                      .toString()
+                      .padLeft(tournamentsPlayed.toString().length, '0'),
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w500,
@@ -121,7 +123,7 @@ class Achievments extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
-              colors: [Colors.redAccent, Colors.redAccent],
+              colors: [Colors.red, Colors.redAccent],
               // stops: _stops,
             ),
           ),
